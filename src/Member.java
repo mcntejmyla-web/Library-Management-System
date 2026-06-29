@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Member {
 
+    // Private variables
     private String memberId;
     private String name;
     private String contact;
@@ -47,27 +48,36 @@ public class Member {
 
     // Borrow Book
     public boolean borrowBook(Book book) {
+
         if (book.isAvailable()) {
+
             borrowedBooks.add(book);
             book.setAvailable(false);
+
             return true;
         }
+
         return false;
     }
 
     // Return Book
     public boolean returnBook(Book book) {
+
         if (borrowedBooks.contains(book)) {
+
             borrowedBooks.remove(book);
             book.setAvailable(true);
+
             return true;
         }
+
         return false;
     }
 
     // Display Member Details
     public void displayMember() {
 
+        System.out.println("----------------------------------------");
         System.out.println("Member ID : " + memberId);
         System.out.println("Name      : " + name);
         System.out.println("Contact   : " + contact);
@@ -75,13 +85,14 @@ public class Member {
 
         if (!borrowedBooks.isEmpty()) {
 
-            System.out.println("Borrowed Books:");
+            System.out.println("\nBorrowed Books:");
 
             for (Book book : borrowedBooks) {
-                System.out.println(book.getTitle());
+
+                System.out.println("- " + book.getTitle());
             }
         }
 
-        System.out.println("----------------------------------");
+        System.out.println("----------------------------------------");
     }
 }
