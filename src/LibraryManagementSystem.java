@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LibraryManagementSystem {
@@ -11,22 +10,25 @@ public class LibraryManagementSystem {
         while (true) {
 
             System.out.println("\n===== LIBRARY MANAGEMENT SYSTEM =====");
-            System.out.println("1. Add Book");
-            System.out.println("2. Register Member");
+            System.out.println("1. Add New Book");
+            System.out.println("2. Register New Member");
             System.out.println("3. Display All Books");
-            System.out.println("4. Display All Members");
-            System.out.println("5. Search Book");
+            System.out.println("4. Display Available Books");
+            System.out.println("5. Search Books");
             System.out.println("6. Borrow Book");
             System.out.println("7. Return Book");
-            System.out.println("8. Exit");
+            System.out.println("8. Display All Members");
+            System.out.println("9. Exit");
 
-            System.out.print("Enter Choice: ");
+            System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
             sc.nextLine();
 
             switch (choice) {
 
                 case 1:
+
+                    System.out.println("\n===== ADD NEW BOOK =====");
 
                     System.out.print("Enter ISBN: ");
                     String isbn = sc.nextLine();
@@ -40,35 +42,37 @@ public class LibraryManagementSystem {
                     System.out.print("Enter Genre: ");
                     String genre = sc.nextLine();
 
-                    library.addBook(new Book(isbn, title, author, genre));
+                    Book book = new Book(isbn, title, author, genre);
+                    library.addBook(book);
 
-                    System.out.println("Book Added Successfully!");
                     break;
 
                 case 2:
 
-                    System.out.print("Enter Member ID: ");
-                    String id = sc.nextLine();
+                    System.out.println("\n===== REGISTER MEMBER =====");
 
-                    System.out.print("Enter Member Name: ");
+                    System.out.print("Enter Member ID: ");
+                    String memberId = sc.nextLine();
+
+                    System.out.print("Enter Name: ");
                     String name = sc.nextLine();
 
                     System.out.print("Enter Contact: ");
                     String contact = sc.nextLine();
 
-                    library.addMember(new Member(id, name, contact));
+                    Member member = new Member(memberId, name, contact);
+                    library.addMember(member);
 
-                    System.out.println("Member Registered Successfully!");
                     break;
 
                 case 3:
 
-                    library.displayBooks();
+                    library.displayAllBooks();
                     break;
 
                 case 4:
 
-                    library.displayMembers();
+                    library.displayAvailableBooks();
                     break;
 
                 case 5:
@@ -76,32 +80,45 @@ public class LibraryManagementSystem {
                     System.out.print("Enter Title or Author: ");
                     String keyword = sc.nextLine();
 
-                    library.searchBook(keyword);
+                    library.searchBooks(keyword);
+
                     break;
 
                 case 6:
 
+                    System.out.println("\n===== BORROW BOOK =====");
+
                     System.out.print("Enter Member ID: ");
-                    String memberId = sc.nextLine();
+                    String borrowMemberId = sc.nextLine();
 
                     System.out.print("Enter Book ISBN: ");
-                    String bookId = sc.nextLine();
+                    String borrowIsbn = sc.nextLine();
 
-                    library.borrowBook(memberId, bookId);
+                    library.borrowBook(borrowMemberId, borrowIsbn);
+
                     break;
 
                 case 7:
 
+                    System.out.println("\n===== RETURN BOOK =====");
+
                     System.out.print("Enter Member ID: ");
-                    String memberId2 = sc.nextLine();
+                    String returnMemberId = sc.nextLine();
 
                     System.out.print("Enter Book ISBN: ");
-                    String bookId2 = sc.nextLine();
+                    String returnIsbn = sc.nextLine();
 
-                    library.returnBook(memberId2, bookId2);
+                    library.returnBook(returnMemberId, returnIsbn);
+
                     break;
 
                 case 8:
+
+                    library.displayAllMembers();
+
+                    break;
+
+                case 9:
 
                     System.out.println("Thank You!");
                     sc.close();
