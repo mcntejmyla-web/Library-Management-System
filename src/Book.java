@@ -1,5 +1,6 @@
 public class Book {
 
+    // Private variables (Encapsulation)
     private String isbn;
     private String title;
     private String author;
@@ -65,13 +66,21 @@ public class Book {
         this.available = available;
     }
 
-    // Display Book Details
+    // Display Book Information
     public void displayBook() {
-        System.out.println("ISBN      : " + isbn);
-        System.out.println("Title     : " + title);
-        System.out.println("Author    : " + author);
-        System.out.println("Genre     : " + genre);
-        System.out.println("Available : " + available);
-        System.out.println("----------------------------------");
+
+        System.out.println("----------------------------------------");
+        System.out.println("ISBN   : " + isbn);
+        System.out.println("Title  : " + title);
+        System.out.println("Author : " + author);
+        System.out.println("Genre  : " + genre);
+
+        if (available) {
+            System.out.println("Status : Available");
+        } else {
+            System.out.println("Status : Borrowed");
+        }
+
+        System.out.println("----------------------------------------");
     }
 }
